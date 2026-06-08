@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập - ROVI GPS</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-content">
+        <div class="login">
+          <div class="login-background"></div>
+          <div class="logo">
+            <div
+              style="
+                display: flex;
+                position: relative;
+                width: 100%;
+                align-items: center;
+              "
+            >
+              <div class="icon_app">
+                <button onclick="openQrApp()">
+                  <img
+                    src="assets/img/App_Store_(iOS).svg.png"
+                    alt="App Store"
+                  />
+                  <img
+                    src="assets/img/google-play-icon-2048x2048-487quz63.png"
+                    alt="Google Play"
+                  />
+                </button>
+              </div>
+              <img src="assets/img/Icon/ROVI GPS-11.png" alt="ROVI GPS Logo" />
+              <div class="change_lan">
+                <div class="main_lang">
+                  <img src="assets/img/flag/flag_vietnam.jpg" alt="VN Flag" />
+                  <p>Tiếng việt</p>
+                </div>
+                <div class="list_lang hide">
+                  <!-- Language list would go here -->
+                </div>
+              </div>
+            </div>
+            <h3>ROVI GPS</h3>
+          </div>
+
+          <div class="form-login">
+            <div class="user">
+              <div class="user-input">
+                <label id="text_userName">Tài khoản</label>
+                <input
+                  type="text"
+                  id="username"
+                  autocomplete="username"
+                  placeholder="Tài khoản"
+                />
+                <span class="login-icon"></span>
+                <span class="clear hide"></span>
+              </div>
+              <div class="error-message hide">Tài khoản không hợp lệ</div>
+            </div>
+            <div class="user t_password">
+              <div class="user-input">
+                <label id="text_password">Mật khẩu</label>
+                <input
+                  type="password"
+                  id="password"
+                  autocomplete="password"
+                  placeholder="Mật khẩu"
+                />
+                <span class="login-icon"></span>
+                <span class="clear hide"></span>
+              </div>
+              <div class="error-message hide">Hãy nhập mật khẩu</div>
+            </div>
+
+            <div class="data-alert-container">
+              <span></span>
+            </div>
+            <button type="submit" id="Login" class="login-btn">
+              <span>Đăng nhập</span>
+            </button>
+            <div class="form-footer">
+              <div>
+                <a href="https://zalo.me/221017559928962481" target="_blank">
+                  <img width="40" src="assets/img/zalo-oa-png.png" alt="Zalo" />
+                </a>
+              </div>
+              <div>
+                <div>
+                  <a href="tel:+84825448558"> Hotline 1: 0825 448 558 </a>
+                </div>
+                <div>
+                  <a href="tel:+84899858565"> Hotline 2: 0899 85 85 65 </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modals -->
+      <div class="qr_app-wrap hide">
+        <div class="qr_app-content">
+          <div class="qr_app-header">
+            <button onclick="closeQrApp()">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="qr_app-img">
+            <img src="assets/img/qr_code.jpg" alt="QR Code" />
+          </div>
+        </div>
+      </div>
+
+      <div class="notification-wrap hide">
+        <div class="qr_app-content">
+          <div class="qr_app-header">
+            <button onclick="closeNotificationApp()">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="notification-wrap-content">
+            <h1
+              style="
+                font-size: 2rem;
+                color: var(--primary-color);
+                margin-bottom: 3rem;
+                text-align: center;
+              "
+              id="titleNotifi"
+            >
+              Lịch bảo trì hệ thống.
+            </h1>
+            <img
+              id="imgNotifi"
+              style="width: 60%; margin: auto; max-height: 60%"
+              src=""
+              alt="Notification"
+            />
+            <span
+              style="white-space: pre-line; max-height: 30%; overflow-y: scroll"
+              id="contentNotifi"
+            >
+              Hệ thống RoviGPS xin gửi quý khách hàng lịch bảo trì hệ thống,
+              thời gian bảo trì hoàn thành 5:00 ngày 20-11-2025. Rất mong nhận
+              được sự thông cảm từ quý khách hàng. Xin chân thành cảm ơn!
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Basic UI interaction logic (Cloned from original)
+      const loginBtn = document.getElementById("Login");
+      const inputWrappers = document.querySelectorAll(".user-input");
+      const inputs = document.querySelectorAll(".user-input input");
+      const clears = document.querySelectorAll(".clear");
+      const errors = document.querySelectorAll(".error-message");
+
+      for (let i = 0; i < inputWrappers.length; i++) {
+        const input = inputs[i];
+        const clear = clears[i];
+        const error = errors[i];
+
+        input.onkeyup = (e) => {
+          input.value
+            ? clear.classList.remove("hide")
+            : clear.classList.add("hide");
+        };
+
+        input.onblur = () => {
+          if (!input.value) {
+            input.classList.add("error-input-border");
+            error.classList.remove("hide");
+          } else {
+            input.classList.remove("error-input-border");
+            error.classList.add("hide");
+          }
+        };
+      }
+
+      function openQrApp() {
+        document.querySelector(".qr_app-wrap").classList.remove("hide");
+      }
+
+      function closeQrApp() {
+        document.querySelector(".qr_app-wrap").classList.add("hide");
+      }
+
+      function closeNotificationApp() {
+        document.querySelector(".notification-wrap").classList.add("hide");
+      }
+    </script>
+  </body>
+</html>

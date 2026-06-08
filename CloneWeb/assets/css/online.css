@@ -1,0 +1,86 @@
+#map {
+    width: 100%;
+    height: calc(100vh - 50px);
+}
+
+/* Side bar */
+#sidebar {
+    width: 400px;
+    height: calc(100vh - 50px);
+    background-color: var(--white-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.tree-panel {
+    min-height: 150px;
+    height: 60%;
+    overflow: auto;
+}
+
+.grid-panel {
+    min-height: 150px;
+    flex: 1;
+    overflow: auto;
+}
+
+.splitter {
+    height: 8px;
+    cursor: row-resize;
+    background: #ddd;
+    position: relative;
+}
+
+.splitter::after {
+    content: "";
+    width: 40px;
+    height: 4px;
+    border-radius: 5px;
+    background: #666;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+#toggle-sidebar {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    border-radius: 5px;
+    right: -40px;
+    top: 50px;
+}
+
+
+.grid-panel {
+    padding: 5px;
+}
+
+.search input {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius);
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+table.dataTable>thead>tr>th,
+table.dataTable>thead>tr>td {
+    font-size: 12px;
+}

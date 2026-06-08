@@ -1,0 +1,442 @@
+@font-face {
+    font-family: "Beware";
+    src: url("../fonts/BEWARE_.TTF") format("truetype");
+}
+
+.container {
+    height: 100vh;
+    background-image: url("../img/Login/gps_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer {
+    position: fixed;
+    z-index: 100;
+    bottom: 0px;
+    left: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.footer img {
+    height: 50px;
+}
+
+.footer span {
+    font-size: 14px;
+    margin-left: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.main-content {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10%;
+    max-width: 400px;
+    width: 375px;
+    margin: 0 10px;
+    z-index: 999;
+}
+
+.login {
+    padding-bottom: 15px;
+    position: relative;
+}
+
+.login-background {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    -webkit-box-shadow: 0 15px 30px rgb(0 0 0 / 20%);
+    box-shadow: 0 15px 30px rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.user-input label {
+    font-size: 14px !important;
+    float: left;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.logo {
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo img {
+    margin-bottom: 10px !important;
+    margin: 12px auto;
+    width: 135px;
+}
+
+.logo h3 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #ee1324;
+    margin-bottom: 20px;
+    font-family: Beware;
+    transform: scale(1, 1.5);
+}
+
+.form-login {
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.form-login .user {
+    margin: 0 10px 22px 10px;
+    position: relative;
+}
+
+.form-login .user .user-input {
+    position: relative;
+}
+
+.form-login .user .user-input input {
+    height: 40px;
+    padding: 0 30px;
+    width: 100%;
+    border-radius: 20px;
+    font-size: 14px;
+    border: 1px solid #c0c4cc;
+    transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.form-login .user .user-input input::placeholder {
+    color: #c4c7cf;
+}
+
+.form-login .user .user-input input:hover {
+    cursor: text;
+}
+
+.form-login .user .user-input .login-icon,
+.clear {
+    position: absolute;
+    color: #c0c4cc;
+    top: 0;
+    transition: all 0.3s;
+}
+
+.login-icon {
+    left: 5px;
+}
+
+.clear {
+    right: 5px;
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.form-login .user .user-input .login-icon i,
+.clear i {
+    width: 25px;
+    line-height: 40px;
+}
+
+#rememberMe {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    outline: none;
+    margin-right: 5px;
+    position: relative;
+    bottom: -1px;
+}
+
+#rememberMe:checked {
+    background-color: var(--primary-color);
+    border: 2px solid #fff;
+    outline: none;
+}
+
+.form-login a p {
+    float: right;
+    color: var(--hover-color);
+    font-weight: 700;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.form-login .login-btn {
+    width: 95%;
+    margin-top: 20px;
+    border: none;
+    background-color: var(--primary-color);
+    font-weight: bold;
+    padding: 12px 20px;
+    transition: 0.1s;
+    text-transform: uppercase;
+    transition: all 0.1s;
+    position: relative;
+    border-radius: 22px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-login .login-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.btn-disable {
+    --content: "";
+    pointer-events: none;
+}
+
+.form-login .login-btn::after {
+    content: var(--content);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.login-btn::before {
+    content: var(--content);
+    position: absolute;
+    top: 50%;
+    left: 38%;
+    margin-top: -6px;
+    margin-left: -10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50px;
+    border: dashed #000;
+    animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.form-login .login-btn:hover {
+    color: #fff;
+}
+
+.form-login .form-footer {
+    color: #ee1324;
+    text-align: center;
+    padding-top: 15px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.form-login .user .error-message {
+    color: #f56c6c;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 4px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.error-input-border {
+    border-color: #f56c6c !important;
+}
+
+.error-input-border:focus {
+    border-color: #f56c6c !important;
+}
+
+.alert {
+    background-color: #f56c6c;
+}
+
+.form-login label {
+    font-size: 16px;
+}
+
+.data-alert-container {
+    position: absolute;
+    width: 90%;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+        visibility 0.2s,
+        opacity 0.3s linear;
+}
+
+.error_active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.data-alert-container span {
+    color: red;
+    opacity: 0.8;
+    font-size: 15px;
+}
+
+.change_lan {
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+.list_lang {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 5px;
+    left: 4px;
+}
+
+.item_lang {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    width: 95px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+.item_lang:hover {
+    background-color: var(--hover-color);
+    border-radius: 5px;
+}
+
+.item_lang img,
+.main_lang img {
+    width: 20px !important;
+    margin: 0 !important;
+}
+
+.item_lang p,
+.main_lang p {
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.main_lang {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    width: 105px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.icon_app {
+    position: absolute;
+    display: flex;
+    top: 5px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.icon_app img {
+    margin-right: 5px;
+    width: 20px !important;
+}
+
+.qr_app-wrap,
+.notification-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999222;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notification-wrap-content {
+    font-size: 15px;
+    height: 100%;
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-wrap-content span {
+    margin-top: 15px;
+    line-height: 25px;
+}
+
+.qr_app-content {
+    width: 700px;
+    height: 700px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    position: relative;
+}
+
+.qr_app-header {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.qr_app-header button i {
+    font-size: 20px;
+    transition: all ease 0.3s;
+}
+
+.qr_app-header button {
+    padding: 10px;
+}
+
+.qr_app-header button:hover>i {
+    color: red;
+}
+
+.qr_app-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr_app-img img {
+    width: 70%;
+    height: 70%;
+}
+
+.qr_app-header button,
+.icon_app button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

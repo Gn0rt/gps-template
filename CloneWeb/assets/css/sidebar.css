@@ -1,0 +1,129 @@
+/* Tree View Modern Styling */
+.tree-panel {
+  padding: 15px 10px;
+  background-color: #ffffff;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.tree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 14px;
+  color: #444;
+}
+
+.tree ul {
+  list-style: none;
+  padding-left: 18px;
+  margin: 0;
+  border-left: 1px solid #edf2f7;
+  margin-left: 12px;
+}
+
+.tree li {
+  position: relative;
+  margin: 2px 0;
+}
+
+.tree summary {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  list-style: none;
+  user-select: none;
+}
+
+.tree summary::-webkit-details-marker {
+  display: none;
+}
+
+.tree summary:hover {
+  background-color: #f7fafc;
+  color: #3182ce;
+}
+
+.tree details[open] > summary {
+  font-weight: 500;
+  color: #2b6cb0;
+}
+
+/* Custom Icon for Summary */
+.tree summary::before {
+  content: "\f105"; /* Font Awesome angle-right */
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
+  margin-right: 10px;
+  font-size: 12px;
+  width: 12px;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  color: #a0aec0;
+}
+
+.tree details[open] > summary::before {
+  transform: rotate(90deg);
+  color: #2b6cb0;
+}
+
+/* Styling for leaf items (direct text in li) */
+.tree li {
+  padding-left: 0;
+}
+
+/* This targets li that do NOT contain a details element */
+.tree li:not(:has(details)) {
+  padding: 8px 12px 8px 34px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  color: #4a5568;
+  display: block;
+}
+
+.tree li:not(:has(details)):hover {
+  background-color: #f7fafc;
+  color: #3182ce;
+}
+
+/* Add a small dot for leaf items to make them look like items */
+.tree li:not(:has(details))::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: #cbd5e0;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.tree li:not(:has(details)):hover::before {
+  background-color: #3182ce;
+  transform: translateY(-50%) scale(1.5);
+}
+
+/* Root level items should not have the border-left margin */
+.tree > li > details > ul {
+  margin-left: 12px;
+}
+
+.tree > li {
+  margin-left: 0;
+}

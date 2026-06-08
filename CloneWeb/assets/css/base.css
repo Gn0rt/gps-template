@@ -1,0 +1,31 @@
+:root {
+  --primary-color: rgb(9, 89, 161);
+  --hover-color: rgb(102, 171, 236);
+
+  --white-color: #fff;
+  --black-color: #000;
+
+  --radius: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+
+.hide {
+  display: none !important;
+}
+
+@keyframes spinLoading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

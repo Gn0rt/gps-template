@@ -1,0 +1,109 @@
+#header {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-logo img {
+    height: 50px;
+}
+
+.header-logo span {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.menu-list {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.menu-list .item a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-list .item a:hover {
+    background-color: var(--hover-color);
+}
+
+.item.has-submenu {
+    position: relative;
+}
+
+.item a i {
+    display: none;
+}
+
+.item.has-submenu a i {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.item.has-submenu:hover .submenu-list {
+    display: block;
+}
+
+.item.has-submenu::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100px;
+    height: 20px;
+    background-color: transparent;
+}
+
+.item.has-submenu .submenu-list {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: var(--primary-color);
+    list-style: none;
+    width: 200px;
+    display: none;
+}
+
+.submenu-list .submenu-item a {
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+}
+
+.submenu-list .submenu-item a:hover {
+    background-color: var(--hover-color);
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info i {
+    font-size: 24px;
+}
