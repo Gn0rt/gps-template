@@ -1,80 +1,108 @@
 var map;
 let isDragging = false;
 var deviceOnlineTable;
+//1: online
+//2: offline
+//3: disconnect
+//4: lost gps
 const dataFake = [
   {
     id: 1,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 1,
   },
   {
     id: 2,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 1,
   },
   {
     id: 3,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 2,
   },
   {
     id: 4,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 2,
   },
   {
-    id: 4,
+    id: 5,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 3,
   },
   {
-    id: 4,
+    id: 6,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 3,
   },
   {
-    id: 4,
+    id: 7,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 3,
   },
   {
-    id: 4,
+    id: 8,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 4,
   },
   {
-    id: 4,
+    id: 9,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 4,
   },
   {
-    id: 4,
+    id: 10,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 1,
   },
   {
-    id: 4,
+    id: 11,
     imei: "123456789011",
     time: "2026-06-12T14:00:00Z",
-    status: "online",
+    status: 2,
   },
 ];
+const 
+function formatDateTime(dateStr) {
+  if (!dateStr) return "";
+  const date = new Date(dateStr);
+  const datePart = date.toLocaleDateString("vi-VN");
+  const timePart = date.toLocaleTimeString("vi-VN");
+  return `${datePart} ${timePart}`;
+}
+function formatStatus(status) {
+  switch (status) {
+    case 1:
+      return `<span style="font-size: 12px; background-color: #4fdb62; display: inline-block; color: #fff; padding: 3px; border-radius: 5px; font-weight: 600">Hoạt động</span>`;
+      break;
+    case 2:
+      return `<span style="font-size: 12px;background-color: #000; display: inline-block; color: #fff; padding: 3px; border-radius: 5px; font-weight: 600">Tắt máy</span>`;
+      break;
+    case 3:
+      return `<span style="font-size: 12px; background-color: #db794f; display: inline-block; color: #fff; padding: 3px; border-radius: 5px; font-weight: 600">Mất tín hiệu</span>`;
+      break;
+    case 4:
+      return `<span style="font-size: 12px; background-color: #db4f4f; display: inline-block; color: #fff; padding: 3px; border-radius: 5px; font-weight: 600">Mất GPS</span>`;
+      break;
+  }
+}
 function renderTable(data) {
   deviceOnlineTable = $("#deviceOnlineTable").DataTable({
     data: data,
     searching: true,
-    autoWidth: false,
-    scrollY: '200px', // Fallback height, CSS flexbox will override this
+    autoWidth: true,
+    ordering: false,
     scrollX: true,
     scrollCollapse: true,
     paging: false,
@@ -84,18 +112,28 @@ function renderTable(data) {
       {
         data: "id",
         orderable: false,
+        width: "50px",
       },
       {
         data: "imei",
         orderable: false,
+        width: "120px",
       },
       {
         data: "time",
         orderable: false,
+        width: "160px",
+        render: function (data, type, row) {
+          return formatDateTime(data);
+        },
       },
       {
         data: "status",
+        width: "80px",
         orderable: false,
+        render: function (data, type, row) {
+          return formatStatus(data);
+        },
       },
     ],
     dom: "lrt",
@@ -105,19 +143,46 @@ function renderTable(data) {
     },
   });
 }
+function updateVehicleCount(data) {
+  let countOn = 0;
+  let countOff = 0;
+  let countDis = 0;
+  let countLost = 0;
 
+  data.forEach((item) => {
+    switch (item.status) {
+      case 1:
+        countOn++;
+        break;
+      case 2:
+        countOff++;
+        break;
+      case 3:
+        countDis++;
+        break;
+      case 4:
+        countLost++;
+        break;
+    }
+  });
+  $(".count-on").text(countOn);
+  $(".count-off").text(countOff);
+  $(".count-dis").text(countDis);
+  $(".count-lost").text(countLost);
+  $(".count-vehicle").text(data.length);
+}
 $(document).ready(function () {
   map = L.map("map", {
     attributionControl: false,
     zoomControl: false,
   }).setView([21.02966365716083, 105.82091052009575], 13);
-  L.tileLayer("https://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}", {
+  L.tileLayer("http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}&hl=vi", {
     maxZoom: 20,
     subdomains: ["mt0", "mt1", "mt2", "mt3"],
   }).addTo(map);
 
   renderTable(dataFake);
-
+  updateVehicleCount(dataFake);
   $("#toggle-sidebar").click(function () {
     $("#sidebar").toggleClass("collapsed");
   });
@@ -134,15 +199,42 @@ $(document).ready(function () {
   $(document).on("mousemove", function (e) {
     if (!isDragging) return;
     const sidebarTop = $("#sidebar").offset().top;
-    console.log("Sidebar Top: ", sidebarTop);
     const sidebarHeight = $("#sidebar").height();
-    console.log("Sidebar Height: ", sidebarHeight);
-    console.log(e.clientY);
     let newHeight = e.clientY - sidebarTop;
 
     newHeight = Math.max(150, newHeight);
     newHeight = Math.min(sidebarHeight - 150, newHeight);
 
     $(".tree-panel").height(newHeight);
+    if (deviceOnlineTable) {
+      deviceOnlineTable.columns.adjust();
+    }
+  });
+
+  $(".list-status .item").on("click", function () {
+    $(".list-status .item").css("opacity", "0.5");
+    $(this).css("opacity", "1");
+    let filterValue = "";
+    if ($(this).hasClass("item-online")) {
+      filterValue = "Hoạt động";
+    } else if ($(this).hasClass("item-offline")) {
+      filterValue = "Tắt máy";
+    } else if ($(this).hasClass("item-disconnect")) {
+      filterValue = "Mất tín hiệu";
+    } else if ($(this).hasClass("item-lostgps")) {
+      filterValue = "Mất GPS";
+    } else {
+      filterValue = "";
+      $(".list-status .item").css("opacity", "1");
+    }
+
+    if (filterValue !== "") {
+      deviceOnlineTable
+        .columns(3)
+        .search("^" + filterValue + "$", true, false)
+        .draw();
+    } else {
+      deviceOnlineTable.column(3).search("").draw();
+    }
   });
 });

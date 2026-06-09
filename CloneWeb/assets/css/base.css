@@ -20,6 +20,7 @@
 /* Toàn bộ scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
+  height: 7px;
 }
 
 /* Track (nền) */
@@ -47,7 +48,12 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
+}
+
+.wrap-text {
+  white-space: unset;
 }

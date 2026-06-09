@@ -34,7 +34,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/base.css" />
     <link rel="stylesheet" href="./assets/css/header.css" />
-    <link rel="stylesheet" href="./assets/css/sidebar.css">
+    <link rel="stylesheet" href="./assets/css/sidebar.css" />
     <link rel="stylesheet" href="./assets/css/online.css" />
 
     <title>Giám sát GPS</title>
@@ -49,13 +49,16 @@
 
         <div class="header-menu">
           <ul class="menu-list">
-            <li class="item"><a href="./index.html">Trang chủ</i></a></li>
+            <li class="item"><a href="./index.html">Trang chủ</a></li>
             <li class="item">
-              <a href="./online.html" class="active">Trực tuyến<i class="fa-solid fa-angle-down"></i></a>
+              <a href="./online.html" class="active"
+                >Trực tuyến<i class="fa-solid fa-angle-down"></i
+              ></a>
             </li>
             <li class="item has-submenu">
               <a href="./manage.html"
-                >Quản trị<i class="fa-solid fa-angle-down"></i></a>
+                >Quản trị<i class="fa-solid fa-angle-down"></i
+              ></a>
               <ul class="submenu-list">
                 <li class="submenu-item">
                   <a href="">Người dùng</a>
@@ -65,7 +68,11 @@
                 </li>
               </ul>
             </li>
-            <li class="item"><a href="./report.html">Báo cáo<i class="fa-solid fa-angle-down"></i></a></li>
+            <li class="item">
+              <a href="./report.html"
+                >Báo cáo<i class="fa-solid fa-angle-down"></i
+              ></a>
+            </li>
           </ul>
         </div>
 
@@ -104,7 +111,7 @@
                             <li>Uranus</li>
                             <li>Neptune</li>
                           </ul>
-                        </details>         
+                        </details>
                       </li>
                       <li>Saturn</li>
                     </ul>
@@ -125,32 +132,68 @@
         </ul>
       </div>
 
-      <div class="splitter">
-
-      </div>
+      <div class="splitter"></div>
 
       <div class="grid-panel">
         <div class="search">
-          <input type="text" placeholder="Nhập IMEI ....">
+          <input type="text" placeholder="Nhập IMEI ...." />
         </div>
-        <table id="deviceOnlineTable" class="tableLayout" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Icon</th>
-              <th>IMEI</th>
-              <th>Thời gian</th>
-              <th>Trạng thái</th>
-            </tr>
-          </thead>
-        </table>
+        <div class="table-container">
+          <table id="deviceOnlineTable" class="tableLayout" style="width: 100%">
+            <thead>
+              <tr>
+                <th>Icon</th>
+                <th>IMEI</th>
+                <th>Thời gian</th>
+                <th>Trạng thái</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="vehicle-status">
+        <ul class="list-status">
+          <li class="item item-online">
+            <div class="item-img">
+              <img src="./assets/img/vehicle/DiChuyen.png" alt="Online" />
+              <span class="item-count count-on">0</span>
+            </div>
+            <span>Hoạt động</span>
+          </li>
+          <li class="item item-offline">
+            <div class="item-img">
+              <img src="./assets/img/vehicle/TatMay.png" alt="Offline" />
+              <span class="item-count count-off">0</span>
+            </div>
+            <span>Tắt máy</span>
+          </li>
+          <li class="item item-disconnect">
+            <div class="item-img">
+              <img src="./assets/img/vehicle/MatTinHieu.png" alt="Disconnect" />
+              <span class="item-count count-dis">0</span>
+            </div>
+            <span>Mất tín hiệu</span>
+          </li>
+          <li class="item item-lostgps">
+            <div class="item-img">
+              <img src="./assets/img/vehicle/LostGPS.png" alt="Lost GPS" />
+              <span class="item-count count-lost">0</span>
+            </div>
+            <span>Mất GPS</span>
+          </li>
+          <li class="item item-vehicles">
+            <div class="item-img item-count-vehicle">
+              <span class="count-vehicle">10</span>
+            </div>
+            <span class="">Tất cả</span>
+          </li>
+        </ul>
       </div>
 
       <button id="toggle-sidebar"><i class="fa-solid fa-bars"></i></button>
     </div>
 
-    <section id="main">
-
-    </section>
+    <section id="main"></section>
 
     <script src="./assets/js/online.js"></script>
   </body>
