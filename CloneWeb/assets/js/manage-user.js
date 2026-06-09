@@ -86,6 +86,5 @@ $(document).ready(function () {
         previous: "Trước",
       },
     },
-    dom: '<"top"f>rt<"bottom"ip><"clear">',
   });
 });
