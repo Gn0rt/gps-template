@@ -80,6 +80,7 @@
     list-style: none;
     width: 200px;
     display: none;
+    z-index: 1000;
 }
 
 .submenu-list .submenu-item a {

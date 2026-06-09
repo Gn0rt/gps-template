@@ -40,6 +40,19 @@
   background: var(--hover-color);
 }
 
+/* Tránh lộ viền của các ô bản đồ khi co giãn */
+.leaflet-tile {
+  border: none !important;
+  outline: none !important;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  /* Tạo hiệu ứng tràn nhẹ để lấp đầy khoảng trống */
+}
+
+/* Fix lỗi tạo đường nứt rạn khi zoom trên trình duyệt Chrome/Edge */
+.leaflet-container img.leaflet-tile {
+  mix-blend-mode: normal;
+}
+
 .hide {
   display: none !important;
 }

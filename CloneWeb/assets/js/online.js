@@ -73,7 +73,9 @@ const dataFake = [
     status: 2,
   },
 ];
-const 
+const iconOn = L.icon({
+  iconUrl: "./assets/img/",
+});
 function formatDateTime(dateStr) {
   if (!dateStr) return "";
   const date = new Date(dateStr);
@@ -95,6 +97,26 @@ function formatStatus(status) {
     case 4:
       return `<span style="font-size: 12px; background-color: #db4f4f; display: inline-block; color: #fff; padding: 3px; border-radius: 5px; font-weight: 600">Mất GPS</span>`;
       break;
+    default:
+      break;
+  }
+}
+function getIconByStatus(status) {
+  switch (status) {
+    case 1:
+      return `<img src="./assets/img/vehicle/DiChuyen.png" style="width: 12px; height: 20px;" />`;
+      break;
+    case 2:
+      return `<img src="./assets/img/vehicle/TatMay.png" style="width: 12px; height: 20px;" />`;
+      break;
+    case 3:
+      return `<img src="./assets/img/vehicle/MatTinHieu.png" style="width: 12px; height: 20px;" />`;
+      break;
+    case 4:
+      return `<img src="./assets/img/vehicle/LostGPS.png" style="width: 12px; height: 20px;" />`;
+      break;
+    default:
+      break;
   }
 }
 function renderTable(data) {
@@ -110,9 +132,12 @@ function renderTable(data) {
 
     columns: [
       {
-        data: "id",
+        data: null,
         orderable: false,
         width: "50px",
+        render: function (data, type, row, meta) {
+          return getIconByStatus(row.status);
+        },
       },
       {
         data: "imei",
