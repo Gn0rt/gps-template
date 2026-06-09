@@ -18,6 +18,23 @@
     flex-direction: column;
 }
 
+#sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+#toggle-sidebar {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    border-radius: 5px;
+    right: -40px;
+    top: 50px;
+}
+
 .tree-panel {
     min-height: 150px;
     height: 60%;
@@ -107,24 +124,6 @@ table.dataTable thead>tr>th div.dt-column-header span.dt-column-title {
         background: var(--white-color);
     }
 }
-
-#sidebar.collapsed {
-    transform: translateX(-100%);
-}
-
-#toggle-sidebar {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    display: block;
-    position: absolute;
-    border-radius: 5px;
-    right: -40px;
-    top: 50px;
-}
-
 
 .search input {
     width: 100%;

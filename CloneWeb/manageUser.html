@@ -80,10 +80,13 @@
     </header>
 
     <main class="manage-layout">
-      <!-- Sidebar trái: Cây tổ chức (Organization Tree) [1, 3] -->
+      <!-- Sidebar trái: Cây tổ chức (Organization Tree) -->
       <aside class="manage-sidebar">
-        <div class="search-org">
-          <input type="text" placeholder="Tìm kiếm tổ chức..." />
+        <div class="sidebar-header">
+          <div class="search-org">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Tìm kiếm tổ chức..." />
+          </div>
         </div>
         <div class="tree-panel">
           <ul class="tree">
@@ -97,23 +100,23 @@
                     <details>
                       <summary>
                         <i class="fa-solid fa-building"></i> Công ty Solution A
-                        (Cấp 1)
                       </summary>
                       <ul>
                         <li>
-                          <i class="fa-solid fa-store"></i> Đại lý Bán lẻ C (Cấp
-                          2)
+                          <i class="fa-solid fa-store"></i> Đại lý Bán lẻ C
                         </li>
                       </ul>
                     </details>
                   </li>
-                  <!-- Thêm các tổ chức khác dựa theo dữ liệu [3] -->
                 </ul>
               </details>
             </li>
           </ul>
         </div>
       </aside>
+      <button id="toggle-sidebar" title="Thu gọn/Mở rộng">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
 
       <!-- Nội dung chính bên phải [1] -->
       <section class="manage-content">
@@ -169,9 +172,6 @@
                 <th>Chức năng</th>
               </tr>
             </thead>
-            <tbody>
-              <!-- Dữ liệu sẽ được render từ JS [6] -->
-            </tbody>
           </table>
         </div>
       </section>
