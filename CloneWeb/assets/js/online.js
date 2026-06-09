@@ -26,16 +26,60 @@ const dataFake = [
     time: "2026-06-12T14:00:00Z",
     status: "online",
   },
+  {
+    id: 4,
+    imei: "123456789011",
+    time: "2026-06-12T14:00:00Z",
+    status: "online",
+  },
+  {
+    id: 4,
+    imei: "123456789011",
+    time: "2026-06-12T14:00:00Z",
+    status: "online",
+  },
+  {
+    id: 4,
+    imei: "123456789011",
+    time: "2026-06-12T14:00:00Z",
+    status: "online",
+  },
+  {
+    id: 4,
+    imei: "123456789011",
+    time: "2026-06-12T14:00:00Z",
+    status: "online",
+  },
+  {
+    id: 4,
+    imei: "123456789011",
+    time: "2026-06-12T14:00:00Z",
+    status: "online",
+  },
+  {
+    id: 4,
+    imei: "123456789011",
+    time: "2026-06-12T14:00:00Z",
+    status: "online",
+  },
+  {
+    id: 4,
+    imei: "123456789011",
+    time: "2026-06-12T14:00:00Z",
+    status: "online",
+  },
 ];
 function renderTable(data) {
   deviceOnlineTable = $("#deviceOnlineTable").DataTable({
     data: data,
     searching: true,
-    autoWidth: true,
-    scrollY: true,
+    autoWidth: false,
+    scrollY: '200px', // Fallback height, CSS flexbox will override this
     scrollX: true,
+    scrollCollapse: true,
     paging: false,
     info: false,
+
     columns: [
       {
         data: "id",
@@ -83,6 +127,9 @@ $(document).ready(function () {
   });
   $(document).on("mouseup", function () {
     isDragging = false;
+    if (deviceOnlineTable) {
+      deviceOnlineTable.columns.adjust().draw();
+    }
   });
   $(document).on("mousemove", function (e) {
     if (!isDragging) return;
