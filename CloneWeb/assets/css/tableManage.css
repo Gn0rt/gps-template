@@ -1,0 +1,31 @@
+/* Table Container */
+.table-container {
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f5f9;
+}
+
+table.dataTable thead > tr > th div.dt-column-header span.dt-column-title {
+  font-size: 13px;
+}
+
+/* DataTables Styling Overrides */
+.tableLayout thead th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tableLayout tbody td {
+  padding: 12px !important;
+  font-size: 14px;
+  color: #1e293b;
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+.tableLayout tbody tr:hover {
+  background-color: #f8fafc;
+}
