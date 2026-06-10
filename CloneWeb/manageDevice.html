@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản trị người dùng</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- datatable -->
+    <link rel="stylesheet" href="./assets/lib/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="./assets/lib/datatables/style.css" />
+    <script src="./assets/lib/datatables/datatables.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/base.css" />
+    <link rel="stylesheet" href="./assets/css/header.css" />
+    <link rel="stylesheet" href="./assets/css/sidebar.css" />
+    <link rel="stylesheet" href="./assets/css/manage/user.css" />
+  </head>
+  <body>
+    <header id="header">
+      <div class="header-container">
+        <div class="header-logo">
+          <img src="./assets/img/logo-gs.png" alt="Logo" />
+          <span>Giám sát GPS</span>
+        </div>
+
+        <div class="header-menu">
+          <ul class="menu-list">
+            <li class="item">
+              <a href="./online.html">
+                <span><i class="fa-solid fa-video"></i>Trực tuyến</span>
+                <i class="fa-solid fa-angle-down arrow-down"></i
+              ></a>
+            </li>
+            <li class="item has-submenu">
+              <a href="">
+                <span><i class="fa-solid fa-folder-open"></i>Quản trị</span>
+                <i class="fa-solid fa-angle-down arrow-down"></i
+              ></a>
+              <ul class="submenu-list">
+                <li class="submenu-item">
+                  <a href="./manageUser.html"
+                    ><i class="fa-solid fa-user-gear"></i>Người dùng</a
+                  >
+                </li>
+                <li class="submenu-item">
+                  <a href="./manageDevice.html"
+                    ><i class="fa-solid fa-mobile-screen"></i>Thiết bị</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="item">
+              <a href="./report.html">
+                <span><i class="fa-solid fa-file-lines"></i>Báo cáo</span>
+                <i class="fa-solid fa-angle-down arrow-down"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="header-user">
+          <div class="notification">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notification-count"></span>
+          </div>
+          <div class="user-phone">
+            <span>0123 456 789</span>
+          </div>
+          <div class="user-info">
+            <i class="fa-solid fa-circle-user"></i>
+            <span class="user-name">[ Nguyễn Văn A ]</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="manage-layout">
+      <!-- Sidebar trái: Cây tổ chức (Organization Tree) -->
+      <aside class="manage-sidebar">
+        <div class="sidebar-header">
+          <div class="search-org">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Tìm kiếm tổ chức..." />
+          </div>
+        </div>
+        <div class="tree-panel">
+          <ul class="tree">
+            <li>
+              <details open>
+                <summary>
+                  <i class="fa-solid fa-sitemap"></i> HMS GPS (Admin)
+                </summary>
+                <ul>
+                  <li>
+                    <details>
+                      <summary>
+                        <i class="fa-solid fa-building"></i> Công ty Solution A
+                      </summary>
+                      <ul>
+                        <li>
+                          <i class="fa-solid fa-store"></i> Đại lý Bán lẻ C
+                        </li>
+                      </ul>
+                    </details>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      <button id="toggle-sidebar" title="Thu gọn/Mở rộng">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <!-- Nội dung chính bên phải -->
+      <section class="manage-content">
+        <div class="content-header">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li><a href="#">Quản trị</a></li>
+              <li class="active">Thiết bị</li>
+            </ol>
+          </nav>
+          <button class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Thêm thiết bị
+          </button>
+        </div>
+
+        <!-- Bộ lọc tìm kiếm -->
+        <div class="filter-panel">
+          <div class="filter-group">
+            <label>Tài khoản</label>
+            <input type="text" placeholder="Nhập username..." />
+          </div>
+          <div class="filter-group">
+            <label>Tổ chức</label>
+            <select>
+              <option value="">-- Tất cả tổ chức --</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Quyền hạn</label>
+            <select>
+              <option value="">-- Tất cả --</option>
+              <option value="ORG_ADMIN">Quản trị viên</option>
+              <option value="STAFF">Nhân viên</option>
+            </select>
+          </div>
+          <div class="filter-actions">
+            <button class="btn btn-search">Tìm kiếm</button>
+            <button class="btn btn-reset">Đặt lại</button>
+          </div>
+        </div>
+
+        <!-- Bảng danh sách người dùng -->
+        <div class="table-container">
+          <table id="userTable" class="tableLayout" style="width: 100%">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Tài khoản</th>
+                <th>Tên tổ chức</th>
+                <th>Cấp bậc</th>
+                <th>Quyền</th>
+                <th>Ngày tạo</th>
+                <th>Chức năng</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="./assets/js/datafake.js"></script>
+    <script type="module" src="./assets/js/manage-user.js"></script>
+  </body>
+</html>

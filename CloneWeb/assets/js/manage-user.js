@@ -127,7 +127,7 @@ function renderOrgTree() {
     treeHtml = `
                 <li>
                     <details open>
-                        <summary><i class="fa-solid fa-sitemap"></i> ROVI GPS (Hệ thống)</summary>
+                        <summary><i class="fa-solid fa-sitemap"></i> HMS GPS (Hệ thống)</summary>
                         <ul>${buildLeaf(filteredOrgs, null)}</ul>
                     </details>
                 </li>`;
