@@ -125,7 +125,6 @@ function renderTable(data) {
     searching: true,
     autoWidth: true,
     ordering: false,
-    scrollX: true,
     scrollCollapse: true,
     paging: false,
     info: false,
