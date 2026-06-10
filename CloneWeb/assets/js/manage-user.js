@@ -7,24 +7,30 @@ let userTable;
 function renderTable(data) {
   userTable = $("#userTable").DataTable({
     data: data,
+    pageLength: 15,
+    lengthChange: false,
+    info: false,
     columns: [
       {
         data: "null",
         render: (data, type, row, meta) => meta.row + 1,
       },
-      { data: "username" },
-      { data: "orgName" },
+      { data: "username", orderable: false },
+      { data: "orgName", orderable: false },
       {
         data: "orgLevel",
+        orderable: false,
         render: (data) => (data === 0 ? "Hệ thống" : `Cấp ${data}`),
       },
       {
         data: "role",
+        orderable: false,
         render: (data) =>
           data === "ORG_ADMIN" ? "Quản trị viên" : "Nhân viên",
       },
       {
         data: "null",
+        orderable: false,
         defaultContent: "2024-06-10",
       },
       {
@@ -34,7 +40,6 @@ function renderTable(data) {
             <div class="table-actions">
               <button class="btn-icon" title="Sửa"><i class="fa-solid fa-pen-to-square"></i></button>
               <button class="btn-icon delete" title="Xóa"><i class="fa-solid fa-trash"></i></button>
-              <button class="btn-icon reset" title="Reset Pass"><i class="fa-solid fa-key"></i></button>
             </div>
           `;
         },
@@ -42,8 +47,6 @@ function renderTable(data) {
     ],
     language: {
       search: "Tìm nhanh:",
-      lengthMenu: "Hiển thị _MENU_ mục",
-      info: "Hiển thị _START_ đến _END_ trong tổng số _TOTAL_ người dùng",
       paginate: {
         first: "Đầu",
         last: "Cuối",
@@ -104,7 +107,7 @@ function buildOrgNode(org, allOrgs) {
   if (children.length > 0) {
     return `
                 <li>
-                    <details open>
+                    <details>
                         <summary><i class="fa-solid ${icon}"></i> ${org.name}</summary>
                         <ul>${children.map((child) => buildOrgNode(child, allOrgs)).join("")}</ul>
                     </details>
