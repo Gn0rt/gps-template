@@ -169,5 +169,69 @@ const userWithOrgDTO = [
     parentId: "ORG_C_ID",
   },
 ];
+const devices = [
+  // ===== THIẾT BỊ TRONG KHO ADMIN (Chưa thuộc tổ chức nào) =====
+  {
+    id: "DEV_001",
+    imei: "860012345678901",
+    deviceName: "Định vị Rovi T1",
+    status: "NEW", // Trạng thái mới nhập kho
+    orgId: null, // Thuộc kho tổng của Admin hệ thống
+    updatedAt: "2024-06-01T08:00:00Z",
+  },
+  {
+    id: "DEV_002",
+    imei: "860012345678902",
+    deviceName: "Định vị Rovi T1",
+    status: "NEW",
+    orgId: null,
+    updatedAt: "2024-06-01T08:00:00Z",
+  },
 
-export { organization, users, userWithOrgDTO };
+  // ===== THIẾT BỊ ĐÃ BÀN GIAO CHO CÔNG TY (Cấp 1) =====
+  {
+    id: "DEV_003",
+    imei: "860012345678903",
+    deviceName: "Giám sát hành trình X2",
+    status: "ACTIVE", // Đã kích hoạt
+    orgId: "ORG_A_ID", // Thuộc Công ty Solution A
+    updatedAt: "2024-06-05T10:30:00Z",
+  },
+  {
+    id: "DEV_004",
+    imei: "860012345678904",
+    deviceName: "Giám sát hành trình X2",
+    status: "ACTIVE",
+    orgId: "ORG_B_ID", // Thuộc Công ty Solution B
+    updatedAt: "2024-06-06T09:15:00Z",
+  },
+
+  // ===== THIẾT BỊ ĐÃ PHÂN PHỐI XUỐNG ĐẠI LÝ (Cấp 2) =====
+  {
+    id: "DEV_005",
+    imei: "860012345678905",
+    deviceName: "Thiết bị định vị GPS T10",
+    status: "ACTIVE",
+    orgId: "ORG_C_ID", // Thuộc Đại lý solution C (Con của Công ty A)
+    updatedAt: "2024-06-08T14:20:00Z",
+  },
+  {
+    id: "DEV_006",
+    imei: "860012345678906",
+    deviceName: "Thiết bị định vị GPS T10",
+    status: "ACTIVE",
+    orgId: "ORG_D_ID", // Thuộc Đại lý solution D (Con của Công ty A)
+    updatedAt: "2024-06-09T16:45:00Z",
+  },
+
+  // ===== THIẾT BỊ TẠI CỬA HÀNG (Cấp 3) =====
+  {
+    id: "DEV_007",
+    imei: "860012345678907",
+    deviceName: "Định vị cầm tay P1",
+    status: "ACTIVE",
+    orgId: "ORG_G_ID", // Thuộc Cửa hàng solution G (Con của Đại lý C)
+    updatedAt: "2024-06-10T11:00:00Z",
+  },
+];
+export { organization, users, userWithOrgDTO, devices };

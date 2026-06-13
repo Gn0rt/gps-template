@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quản trị người dùng</title>
+    <title>Quản trị thiết bị</title>
     <script
       src="https://code.jquery.com/jquery-3.7.1.js"
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
@@ -142,21 +142,17 @@
         <!-- Bộ lọc tìm kiếm -->
         <div class="filter-panel">
           <div class="filter-group">
-            <label>Tài khoản</label>
-            <input type="text" placeholder="Nhập username..." />
+            <label>IMEI</label>
+            <input type="text" placeholder="Nhập IMEI..." />
+          </div>
+          <div class="filter-group">
+            <label>Biển số</label>
+            <input type="text" placeholder="Nhập IMEI..." />
           </div>
           <div class="filter-group">
             <label>Tổ chức</label>
             <select>
               <option value="">-- Tất cả tổ chức --</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label>Quyền hạn</label>
-            <select>
-              <option value="">-- Tất cả --</option>
-              <option value="ORG_ADMIN">Quản trị viên</option>
-              <option value="STAFF">Nhân viên</option>
             </select>
           </div>
           <div class="filter-actions">
@@ -167,14 +163,14 @@
 
         <!-- Bảng danh sách người dùng -->
         <div class="table-container">
-          <table id="userTable" class="tableLayout" style="width: 100%">
+          <table id="deviceTable" class="tableLayout" style="width: 100%">
             <thead>
               <tr>
                 <th>STT</th>
-                <th>Tài khoản</th>
-                <th>Tên tổ chức</th>
-                <th>Cấp bậc</th>
-                <th>Quyền</th>
+                <th>IMEI</th>
+                <th>Tên thiết bị</th>
+                <th>Thuộc sở hữu</th>
+                <th>Trạng thái</th>
                 <th>Ngày tạo</th>
                 <th>Chức năng</th>
               </tr>
@@ -185,6 +181,6 @@
     </main>
 
     <script src="./assets/js/datafake.js"></script>
-    <script type="module" src="./assets/js/manage-user.js"></script>
+    <script type="module" src="./assets/js/manage-device.js"></script>
   </body>
 </html>

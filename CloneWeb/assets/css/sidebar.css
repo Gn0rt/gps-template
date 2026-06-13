@@ -4,6 +4,7 @@
   background-color: #ffffff;
   height: 100%;
   overflow-y: auto;
+  overflow-x: auto;
 }
 
 .tree {
@@ -46,7 +47,12 @@
   list-style: none;
   user-select: none;
 }
-
+.tree-panel .tree li,
+.tree-panel .tree summary {
+  white-space: nowrap; /* Ép văn bản nằm trên một dòng */
+  display: flex; /* Giữ icon và text trên cùng một hàng */
+  align-items: center;
+}
 .tree summary::-webkit-details-marker {
   display: none;
 }
